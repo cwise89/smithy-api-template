@@ -47,7 +47,12 @@ structure EchoOutput {
 structure LengthInput {
     @required
     @httpLabel
+    @pattern("^[a-zA-Z0-9]*$")
     string: String,
+
+    @required
+    @httpQuery("limit")
+    limit: Integer
 }
 
 structure LengthOutput {

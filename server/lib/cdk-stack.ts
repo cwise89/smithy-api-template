@@ -9,7 +9,7 @@ import {
 } from "aws-cdk-lib/aws-apigateway";
 import { AnyPrincipal, Effect, PolicyDocument, PolicyStatement, ServicePrincipal } from "aws-cdk-lib/aws-iam";
 import {Runtime} from "aws-cdk-lib/aws-lambda";
-import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
+import { NodejsFunction, SourceMapMode } from "aws-cdk-lib/aws-lambda-nodejs";
 import { LogGroup } from "aws-cdk-lib/aws-logs";
 import { Construct } from "constructs";
 import { readFileSync } from "fs";
@@ -41,8 +41,8 @@ export class CdkStack extends cdk.Stack {
             nodeModules: ["re2-wasm"],
 
             // Enable these for easier debugging, though they will increase your artifact size
-            // sourceMap: true,
-            // sourceMapMode: SourceMapMode.INLINE
+            sourceMap: true,
+            sourceMapMode: SourceMapMode.INLINE
           },
         }),
       }),

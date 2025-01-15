@@ -12,8 +12,10 @@ export const LengthOperation: Operation<LengthServerInput, LengthServerOutput, H
   input,
   context
 ) => {
+  context
   console.log(`Received Length operation from: ${context.user}`);
 
+  input.
   if (input.string != undefined && input.string === reverse(input.string)) {
     throw new PalindromeException({ message: "Cannot handle palindrome" });
   }
