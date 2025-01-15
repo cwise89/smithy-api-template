@@ -1,6 +1,6 @@
 import { convertEvent, convertVersion1Response } from "@aws-smithy/server-apigateway";
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { ServiceHandler } from "@aws-smithy/server-common";
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { APIGatewayProxyHandler } from "aws-lambda/trigger/api-gateway-proxy";
 
 /**
@@ -9,6 +9,7 @@ import { APIGatewayProxyHandler } from "aws-lambda/trigger/api-gateway-proxy";
  */
 export interface HandlerContext {
   user: string;
+  requestId: string;
 }
 
 /**
@@ -24,7 +25,8 @@ export function getApiGatewayHandler(handler: ServiceHandler<HandlerContext>): A
     if (!userArn) {
       throw new Error("IAM Auth is not enabled");
     }
-    const context = { user: userArn };
+
+    const context = { user: userArn, requestId: event.requestContext.requestId };
 
     const httpRequest = convertEvent(event);
     const httpResponse = await handler.handle(httpRequest, context);

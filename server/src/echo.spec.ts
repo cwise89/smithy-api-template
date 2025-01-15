@@ -1,8 +1,8 @@
-import { EchoOperation } from "./echo";
 import { PalindromeException } from "@smithy-demo/string-wizard-service-ssdk";
+import { EchoOperation } from "./echo";
 
 describe("Echo tests", () => {
-  const context = { user: "user123" };
+  const context = { user: "user123", requestId: "request123" };
 
   it("echoes the string back", async () => {
     const output = await EchoOperation({ string: "canoe" }, context);

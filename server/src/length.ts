@@ -14,8 +14,8 @@ export const LengthOperation: Operation<LengthServerInput, LengthServerOutput, H
 ) => {
   context
   console.log(`Received Length operation from: ${context.user}`);
+  console.log(`Input: ${JSON.stringify(input)}`);
 
-  input.
   if (input.string != undefined && input.string === reverse(input.string)) {
     throw new PalindromeException({ message: "Cannot handle palindrome" });
   }

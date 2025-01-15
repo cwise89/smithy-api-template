@@ -1,8 +1,8 @@
-import { LengthOperation } from "./length";
 import { PalindromeException } from "@smithy-demo/string-wizard-service-ssdk";
+import { LengthOperation } from "./length";
 
 describe("Length tests", () => {
-  const context = { user: "user123" };
+  const context = { user: "user123", requestId: "request123" };
 
   it("returns the length of the string", async () => {
     const output = await LengthOperation({ string: "canoe", limit: 1 }, context);
